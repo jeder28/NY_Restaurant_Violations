@@ -14,9 +14,9 @@ class Controller
       @view.display_prompt
       input = @view.get_input
       if input.include?("best")
-        @view.display_message(:best, @model.get_best(input[4..-1]))
+        @view.display_message(:best, @model.get_best(input[5..-1]))
       elsif input.include?("worst")
-        @view.display_message(:worst, @model.get_worst(input[4..-1]))
+        @view.display_message(:worst, @model.get_worst(input[6..-1]))
       else
         @view.display_message([])
       end
