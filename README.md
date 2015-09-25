@@ -6,5 +6,11 @@ We wrote this command line app using JSON queries and Ruby, in 3 hrs to play wit
 
 The app allows you to search for the worst or best restaurants based upon how many food inspection violations they have documented. It will return the top 10 best or worst based upon what you specified.
 
+To use our app, simply run the controller file, enter the keywords best or worst followed by the city you would like to search:
+
+```
+>ruby controller.rb
+>best Albany
+```
 
 ----------
