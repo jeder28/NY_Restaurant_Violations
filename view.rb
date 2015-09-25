@@ -1,3 +1,6 @@
+require_relative 'controller'
+require_relative 'model'
+
 class View
 
   MESSAGES = {
@@ -22,8 +25,8 @@ Commands available:
   end
 
   def display_message(message_id, list_ary)
-    puts MESSAGES.fetch(message_id) {raise ArgumentError, "Message not found: #{message_id}"}
-    list_ary.is_a?(Array) ? display_list(list_ary_hashes) : puts "empty information"
+    puts MESSAGES.fetch(message_id) { raise ArgumentError, "Message not found: #{message_id}" }
+    list_ary.is_a?(Array) ? display_list(list_ary) : puts "empty information"
   end
 
   def display_list(list_ary)
