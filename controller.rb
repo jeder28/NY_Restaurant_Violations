@@ -1,7 +1,7 @@
 require_relative 'model'
 require_relative 'view'
 class Controller
-  def iniitialize
+  def initialize
     @view = View.new
     @model = Model.new
     run
