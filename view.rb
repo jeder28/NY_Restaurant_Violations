@@ -1,5 +1,3 @@
-require_relative 'controller'
-require_relative 'model'
 
 class View
 
@@ -24,13 +22,22 @@ Commands available:
     STDIN.gets.chomp
   end
 
-  def display_message(message_id, list_ary)
+  def display_prompt
+    print ">"
+  end
+
+  def display_message(message_id, list_ary=[])
     puts MESSAGES.fetch(message_id) { raise ArgumentError, "Message not found: #{message_id}" }
-    list_ary.is_a?(Array) ? display_list(list_ary) : puts "empty information"
+    if list_ary.empty?
+      puts "empty information"
+    else
+      display_list(list_ary)
+    end
   end
 
   def display_list(list_ary)
-    puts "Name".rjust(30, ' ')+"Critical Unfixed Violations".rjust(28, ' ')+"Critical Violations".rjust(23, ' ')+"Noncritical Violations".rjust(26, ' ')
+    return if list_ary.empty?
+    puts "Name".ljust(40, ' ')+"Critical Unfixed Violations".rjust(28, ' ')+"Critical Violations".rjust(23, ' ')+"Noncritical Violations".rjust(26, ' ')
     # most_keys_header.each_key { |column_key| print "#{column_key} " }
     list_ary.each { |restaurant| puts restaurant }
   end

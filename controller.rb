@@ -3,7 +3,7 @@ require_relative 'view'
 class Controller
   def initialize
     @view = View.new
-    @model = Model.new
+    @model = Model
     run
   end
 
