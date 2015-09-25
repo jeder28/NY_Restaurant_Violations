@@ -28,7 +28,7 @@ Commands available:
 
   def display_message(message_id, list_ary=[])
     puts MESSAGES.fetch(message_id) { raise ArgumentError, "Message not found: #{message_id}" }
-    if list_ary.empty?
+    if list_ary.empty? && message_id != :hello
       puts "empty information"
     else
       display_list(list_ary)
