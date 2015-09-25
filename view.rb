@@ -8,9 +8,6 @@ Commands available:
   'quit' => Exit program
   'best' => Find those with least/no violations.
   'worst' => Find those with most violations.
-  'cities' => Find nearest match by name in a certain city.
-  then include restaurant name as accurate as possible:
-  "best McDonald's"
     HELLO
     quit: "\nWe hope you enjoyed your restaurant violations report!",
     best: "\nHere are the top 10 most tolerable places\n----------",
