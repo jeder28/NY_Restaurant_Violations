@@ -17,10 +17,9 @@ class Controller
         @view.display_message(:best, @model.get_best(input[5..-1]))
       elsif input.include?("worst")
         @view.display_message(:worst, @model.get_worst(input[6..-1]))
-      else
-        @view.display_message([])
       end
     end
+    @view.display_message(:quit, [])
   end
 end
 
