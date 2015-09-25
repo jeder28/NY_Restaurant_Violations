@@ -21,18 +21,15 @@ Commands available:
     STDIN.gets.chomp
   end
 
-  def display_message(message_id, list_ary_hashes)
+  def display_message(message_id, list_ary)
     puts MESSAGES.fetch(message_id) {raise ArgumentError, "Message not found: #{message_id}"}
-    list_ary_hashes.is_a?(Array) ? display_list(list_ary_hashes) : false
+    list_ary.is_a?(Array) ? display_list(list_ary_hashes) : puts "empty information"
   end
 
-  def display_list(list_ary_hashes)
-    list_ary_hashes.first.each_key { |column_key| print "#{column_key} " }
-    list_ary_hashes.each do |hash|
-      print "\n"
-      hash.each_value { |row_value| print "#{row_value} " }
-    end
-    print "\n"
+  def display_list(list_ary)
+    puts "Name".rjust(30, ' ')+"Critical Unfixed Violations".rjust(28, ' ')+"Critical Violations".rjust(23, ' ')+"Noncritical Violations".rjust(26, ' ')
+    # most_keys_header.each_key { |column_key| print "#{column_key} " }
+    list_ary.each { |restaurant| puts restaurant }
   end
 
   def clear_screen
