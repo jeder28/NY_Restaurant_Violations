@@ -20,9 +20,9 @@ class Model
 
   def self.sort_by_violations(restaurants)
     restaurants.sort do |restaurant_a, restaurant_b|
-      unfixed_violations_sort = restaurant_a.fetch("total_crit_not_corrected", 0) <=> restaurant_b.fetch("total_crit_not_corrected", 0)
-      critical_sort = restaurant_a.fetch("total_critical_violations", 0) <=> restaurant_b.fetch("total_critical_violations", 0)
-      non_critical_sort = restaurant_a.fetch("total_noncritical_violations", 0) <=> restaurant_b.fetch("total_noncritical_violations", 0)
+      unfixed_violations_sort = restaurant_a.fetch("total_crit_not_corrected", 0).to_i <=> restaurant_b.fetch("total_crit_not_corrected", 0).to_i
+      critical_sort = restaurant_a.fetch("total_critical_violations", 0).to_i <=> restaurant_b.fetch("total_critical_violations", 0).to_i
+      non_critical_sort = restaurant_a.fetch("total_noncritical_violations", 0).to_i <=> restaurant_b.fetch("total_noncritical_violations", 0).to_i
       if unfixed_violations_sort != 0
         unfixed_violations_sort
       elsif critical_sort != 0
@@ -39,15 +39,15 @@ class Restaurant
   attr_reader :name, :city, :critical, :critical_unfixed, :non_critical
 
   def initialize(args)
-    @name = args.fetch("facility") {""}
-    @city = args.fetch("city") {""}
+    @name = args.fetch("facility") {""}.strip
+    @city = args.fetch("city") {""}.strip
     @critical_unfixed = args.fetch("total_crit_not_corrected") {0}
     @critical = args.fetch("total_critical_violations") {0}
     @non_critical = args.fetch("total_noncritical_violations") {0}
   end
 
   def to_s
-    "#{name.rjust(30, ' ')}  #{critical_unfixed.rjust(28, ' ')} #{critical.rjust(23, ' ')} #{non_critical.rjust(26, ' ')}"
+    "#{name[0..42].ljust(42, ' ')}  #{critical_unfixed.rjust(13, ' ')} #{critical.rjust(23, ' ')} #{non_critical.rjust(26, ' ')}"
   end
 end
 
